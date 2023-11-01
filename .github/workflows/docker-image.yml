@@ -29,7 +29,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
   
-      - name: Fetch the latest image tag
+      - name: Fetch the update the latest image tag
         id: get-latest-tag
         run: |
           repository="eyesoncloud/webapp"
@@ -37,14 +37,9 @@ jobs:
           sorted_tags_info=$(echo "$tags_info" | sort -k2)
           latest_tag_info=$(echo "$sorted_tags_info" | tail -n 1)
           latest_tag=$(echo "$latest_tag_info" | awk '{print $1}')
-          echo "$latest_tag" > image_tag.txt
-        shell: bash
-  
-      - name: Update Deployment Manifest
-        run: |
           sed -i "s|tag:.*|tag: $latest_tag|" helm-webapp/values.yaml
         shell: bash
-        
+    
       - name: Commit and push Deployment changes
         run: |
           git config --global user.email "${{ secrets.MAIL }}"
