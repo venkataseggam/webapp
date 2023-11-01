@@ -7,14 +7,12 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
+    runs-on: centos-latest
     steps:
 
       - uses: actions/checkout@v3
       - name: Build the Docker image
-        run: |
-          version=$(echo "$(date +%s)" | awk '{print $1}')
-          docker build . --file Dockerfile --tag my-image-name:$version
+        run: docker build . --file Dockerfile --tag webapp:$(date +%s)
         
       -
         name: Login to Docker Hub
@@ -27,7 +25,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DHNAME }}/webapp:$version
+          tags: ${{ secrets.DHNAME }}/webapp:$(date +%s)
       
       - name: Checkout code
         uses: actions/checkout@v2
