@@ -24,7 +24,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DHNAME }}/webapp:v2
+          tags: ${{ secrets.DHNAME }}/webapp:$(date +%s)
       
       - name: Checkout code
         uses: actions/checkout@v2
