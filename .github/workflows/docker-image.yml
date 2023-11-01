@@ -18,8 +18,7 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          timestamp=$(echo "${{ steps.timestamp.outputs.timestamp }}")
-          docker build -t ${{ secrets.DHNAME }}/webapp:$timestamp -f Dockerfile .
+          docker build -t ${{ secrets.DHNAME }}/webapp:${{ steps.timestamp.outputs.timestamp}} -f Dockerfile .
         shell: bash
 
       - name: Login to Docker Hub
@@ -29,10 +28,7 @@ jobs:
           password: ${{ secrets.DHPASSWORD }}
 
       - name: Push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          tags: ${{ secrets.DHNAME }}/webapp:$timestamp
+        run: docker push ${{ secrets.DHNAME }}/webapp:${{ steps.timestamp.outputs.timestamp}}
   
       - name: Fetch the update the latest image tag
         id: get-latest-tag
