@@ -24,4 +24,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DHNAME }}/webapp:v1
+          tags: ${{ secrets.DHNAME }}/webapp:v2
