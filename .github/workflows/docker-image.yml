@@ -32,13 +32,14 @@ jobs:
       - name: Fetch the latest image tag
         id: get-latest-tag
         run: |
-          latest_tag=$(curl -s "https://registry.hub.docker.com/v2/repositories/eyesoncloud/webapp/tags" | jq -r '.results[0].name')
-          echo "Latest Tag: $latest_tag"
-          echo "::set-output name=latest_tag::$latest_tag"
+          repository="eyesoncloud/webapp"
+          tags_info=$(curl -s "https://registry.hub.docker.com/v2/repositories/$repository/tags/" | jq -r '.results[] | "\(.name) \(.last_updated)"')
+          sorted_tags_info=$(echo "$tags_info" | sort -k2)
+          latest_tag_info=$(echo "$sorted_tags_info" | tail -n 1)
+          latest_tag=$(echo "$latest_tag_info" | awk '{print $1}')
         shell: bash
   
       - name: Update Deployment Manifest
         run: |
-          # Update your Deployment manifest with the latest image tag
           sed -i "s|tag:.*|tag: $latest_tag|" helm-webapp/values.yaml
         shell: bash
