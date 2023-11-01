@@ -14,7 +14,7 @@ jobs:
 
       - name: Generate timestamp
         id: timestamp
-        run: echo "::set-output name=timestamp::$(date +%s)"
+        run: echo "${{ steps.timestamp.outputs.timestamp }}" >> $GITHUB_STATE
 
       - name: Build the Docker image
         run: |
