@@ -29,10 +29,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
   
-      - name: Fetch the least recently pushed image tag
+      - name: Fetch the latest image tag
+        id: get-latest-tag
         run: |
-          latest_tag=$(curl -s "https://registry.hub.docker.com/v2/repositories/eyesoncloud/webapp/tags/" | jq -r '.results[0].name')
-          echo "Latest Tag: $latest_tag" >> $GITHUB_ENV
+          latest_tag=$(curl -s "https://registry.hub.docker.com/v2/repositories/eyesoncloud/webapp/tags" | jq -r '.results[0].name')
+          echo "Latest Tag: $latest_tag"
+          echo "::set-output name=latest_tag::$latest_tag"
         shell: bash
   
       - name: Update Deployment Manifest
