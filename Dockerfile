@@ -6,6 +6,7 @@ ADD index.html /usr/share/nginx/html/index.html
 COPY nginx-template.conf /etc/nginx/nginx-template.conf
 RUN sed -i 's/{{PORT}}/8080/g' /etc/nginx/nginx-template.conf
 RUN cp /etc/nginx/nginx-template.conf /etc/nginx/nginx.conf
+USER root
 RUN chown -R 1001:0 /var/run/nginx 
 RUN chown -R 1001:0 /var/lib/nginx 
 RUN chmod -R g+rw /var/run/nginx 
