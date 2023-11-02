@@ -1,5 +1,7 @@
 FROM centos:latest
-RUN yum -y install epel-release && \
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-Base.repo && \
+    sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-Base.repo && \
+    yum -y install epel-release && \
     yum -y install nginx && \
     yum clean all && \
     rm -rf /var/cache/yum
