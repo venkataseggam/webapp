@@ -1,5 +1,5 @@
 # index.html file 
-## v1 
+## v1 Blue
 ```
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
     <title>Welcome to EyesOnCloud Test Web Server App</title>
     <style>
         body {
-            background-color: white;
+            background-color: 	#1E90FF;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -30,7 +30,7 @@
 </body>
 </html>
 ```
-##v2
+## v2 Green
 ```
 <!DOCTYPE html>
 <html>
@@ -38,14 +38,14 @@
     <title>Welcome to EyesOnCloud Test Web Server App</title>
     <style>
         body {
-            background-color: black;
+            background-color: 	#ADFF2F;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            color: white;
+            color: black;
         }
 
         img {
