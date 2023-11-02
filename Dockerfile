@@ -8,5 +8,5 @@ RUN yum -y update && \
     rm -rf /var/cache/yum
 RUN rm -f /usr/share/nginx/html/index.html
 COPY index.html /usr/share/nginx/html/index.html
-EXPOSE 8080
+EXPOSE 8081
 CMD ["nginx", "-g", "daemon off;"]
