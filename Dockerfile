@@ -7,7 +7,7 @@ ADD index.html /usr/share/nginx/html/index.html
 ADD nginx.conf /etc/nginx/nginx.conf
 RUN mkdir -p /var/run/nginx && \
     chown -R 1001:0 /var/run/nginx
-RUN sed -i 's|pid /run/nginx/nginx.pid;|pid /var/run/nginx/nginx.pid;|' /etc/nginx/nginx.conf
+RUN sed -i 's|pid /run/nginx.pid;|pid /var/run/nginx/nginx.pid;|' /etc/nginx/nginx.conf
 EXPOSE 8080
 USER 1001
 CMD ["nginx", "-c", "/etc/nginx/nginx.conf", "-g", "daemon off;"]
