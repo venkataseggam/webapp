@@ -5,8 +5,8 @@ RUN yum -y install epel-release
 RUN yum -y install nginx
 ADD index.html /usr/share/nginx/html/index.html
 ADD nginx.conf /etc/nginx/nginx.conf
-RUN mkdir -p /run/nginx && \
-    chown -R 1001:0 /var/log/nginx /run/nginx
+RUN mkdir -p /var/run/nginx && \
+    chown -R 1001:0 /var/run/nginx
 EXPOSE 8080
 USER 1001
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-c", "/etc/nginx/nginx-custom.conf", "-g", "daemon off;"]
