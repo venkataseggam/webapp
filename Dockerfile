@@ -9,4 +9,4 @@ RUN mkdir -p /var/run/nginx && \
     chown -R 1001:0 /var/run/nginx
 EXPOSE 8080
 USER 1001
-CMD ["nginx", "-c", "/etc/nginx/nginx-custom.conf", "-g", "daemon off;"]
+CMD ["nginx", "-c", "/etc/nginx/nginx.conf", "-g", "daemon off;"]
