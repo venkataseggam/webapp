@@ -4,5 +4,5 @@ RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|
 RUN yum -y install epel-release
 RUN yum -y install nginx
 ADD index.html /usr/share/nginx/html/index.html
-EXPOSE 8090
+EXPOSE 80/tcp
 CMD ["nginx", "-g", "daemon off;"]
