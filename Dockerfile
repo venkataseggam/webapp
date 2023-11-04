@@ -5,6 +5,9 @@ RUN yum -y install epel-release
 RUN yum -y install nginx
 ADD index.html /usr/share/nginx/html/index.html
 ADD nginx.conf /etc/nginx/nginx.conf
+RUN mkdir -p /etc/systemd/system/nginx.service.d
+RUN echo "[Service]\nExecStartPost=/bin/sleep 0.1\n" > /etc/systemd/system/nginx.service.d/override.conf
+RUn systemctl daemon-reload
+RUN systemctl restart nginx
 EXPOSE 8080
-USER 1001
 CMD ["nginx", "-g", "daemon off;"]
