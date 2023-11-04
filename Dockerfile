@@ -7,7 +7,7 @@ ADD index.html /usr/share/nginx/html/index.html
 ADD nginx.conf /etc/nginx/nginx.conf
 RUN mkdir -p /etc/systemd/system/nginx.service.d
 RUN echo "[Service]\nExecStartPost=/bin/sleep 0.1\n" > /etc/systemd/system/nginx.service.d/override.conf
-RUN systemctl daemon-reload
-RUN systemctl restart nginx
+RUN sudo systemctl daemon-reload
+RUN sudo systemctl restart nginx
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
