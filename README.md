@@ -7,7 +7,7 @@
     <title>Welcome to EyesOnCloud Test Web Server App</title>
     <style>
         body {
-            background-color: 	#1E90FF;
+            background-color: #1E90FF;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -38,7 +38,7 @@
     <title>Welcome to EyesOnCloud Test Web Server App</title>
     <style>
         body {
-            background-color: 	#ADFF2F;
+            background-color: #ADFF2F;
             display: flex;
             flex-direction: column;
             justify-content: center;
