@@ -26,7 +26,7 @@
 <body>
     <h1>Welcome to EyesOnCloud Test Web Server App</h1>
     <p>This is a test web server application.</p>
-    <img src="https://github.com/EyesOnCloud/helm-webapp/raw/main/EOC%20logo.png" alt="EOC Logo">
+    <img src="https://github.com/EyesOnCloud/webapp/raw/main/EOC%20logo.png" alt="EOC Logo">
 </body>
 </html>
 ```
@@ -57,7 +57,7 @@
 <body>
     <h1>Welcome to EyesOnCloud Test Web Server App</h1>
     <p>This is a test web server application.</p>
-    <img src="https://github.com/EyesOnCloud/helm-webapp/raw/main/EOC%20logo.png" alt="EOC Logo">
+    <img src="https://github.com/EyesOnCloud/webapp/raw/main/EOC%20logo.png" alt="EOC Logo">
 </body>
 </html>
 ```
