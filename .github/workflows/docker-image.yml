@@ -14,7 +14,7 @@ jobs:
 
       - name: Generate timestamp
         id: timestamp
-        run: echo "::set-output name=timestamp::$(date +%M)"
+        run: echo "::set-output name=timestamp::$(date +%S)"
 
       - name: Build the Docker image
         run: |
