@@ -1,7 +1,7 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: {{ .Values.appName }}-route-dev
+  name: {{ .Values.appName }}-route
   labels:
     app: {{ .Values.appName }}
     environment: dev
@@ -13,9 +13,3 @@ spec:
   port:
     targetPort: flask
   wildcardPolicy: None
-  # Use the value of CUSTOM_HEADER from the config map
-  annotations:
-    openshift.io/ignore-route-prefix: "true"
-    haproxy.router.openshift.io/rewrite-target: /
-    haproxy.router.openshift.io/cookie_key: CUSTOM_HEADER
-    haproxy.router.openshift.io/cookie_value: {{ .Values.configmap.data.CUSTOM_HEADER }}
