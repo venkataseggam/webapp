@@ -11,13 +11,11 @@ spec:
     matchLabels:
       app: {{ .Values.appName }}
       tier: frontend
-      environment: prod
   template:
     metadata:
       labels:
         app: {{ .Values.appName }}
         tier: frontend
-        environment: prod
     spec: # Pod spec
       containers:
       - name: mycontainer
@@ -34,3 +32,12 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "100m"
+{{- if eq .Values.environment "dev" }}
+        env:
+        - name: ENVIRONMENT
+          value: "dev"
+{{- else if eq .Values.environment "prod" }}
+        env:
+        - name: ENVIRONMENT
+          value: "prod"
+{{- end }}
