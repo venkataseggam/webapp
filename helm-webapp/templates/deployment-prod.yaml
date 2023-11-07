@@ -11,33 +11,26 @@ spec:
     matchLabels:
       app: {{ .Values.appName }}
       tier: frontend
+      environment: prod
   template:
     metadata:
       labels:
         app: {{ .Values.appName }}
         tier: frontend
-    spec: # Pod spec
+        environment: prod
+    spec:
       containers:
-      - name: mycontainer
-        image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
-        ports:
-        - containerPort: 8080
-        envFrom:
-        - configMapRef:
-            name: {{ .Values.configmap.name }}
-        resources:
-          requests:
-            memory: "16Mi"
-            cpu: "50m"
-          limits:
-            memory: "128Mi"
-            cpu: "100m"
-{{- if eq .Values.environment "dev" }}
-        env:
-        - name: ENVIRONMENT
-          value: "dev"
-{{- else if eq .Values.environment "prod" }}
-        env:
-        - name: ENVIRONMENT
-          value: "prod"
-{{- end }}
+        - name: mycontainer
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.configmap.name }}
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
