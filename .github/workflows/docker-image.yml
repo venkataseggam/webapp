@@ -29,7 +29,12 @@ jobs:
 
       - name: Push Docker image
         run: docker push ${{ secrets.DHNAME }}/webapp:${{ steps.timestamp.outputs.timestamp}}
-  
+        
+      - name: Sleep for 10 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '10s'
+          
       - name: Fetch the update the latest image tag
         id: get-latest-tag
         run: |
